@@ -1,0 +1,15 @@
+/*    
+    SOME OF THE WORPRESS FUNCTIONS USED IN PHP TO DEVELOP CUSTOM WORDPRESS THEMES 
+*/
+
+(1) get_header(); // Includes the header.php file from the active theme
+(2) get_footer(); // Includes the footer.php file from the active theme
+(3) get_template_part('template-parts/content', 'article'); // Includes a specific template part
+(4) get_template_directory_uri() and get_template_directory() are functions used to retrieve the directory path or URL of the current theme's directory. These functions are helpful when you want to reference files or assets within your theme.
+(5) register_nav_menus() is a function used within the theme setup to register navigation menus. It enables you to define and create multiple navigation menu locations that can be managed through the WordPress admin dashboard.
+(6) the_title(): Displays the title of the current post.
+(7) the_content(): Displays the content of the current post.
+(8) the_permalink(): Displays the URL of the current post.
+(9) Actions (do_action()): Trigger events at specific moments in WordPress execution.
+(10) Filters (apply_filters()): Modify specific data before it's displayed or processed by WordPress.
+(11) add_theme_support('post-thumbnails'). This function enables the feature to associate thumbnail images with posts and custom post types within your theme.
