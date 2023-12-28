@@ -28,7 +28,12 @@
             	<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container box_1620">
 						<!-- Brand and toggle get grouped for better mobile display -->
-						<a class="navbar-brand logo_h" href="index.php"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png" alt=""></a>
+                        <?php 
+                            $logoimg = get_header_image();
+                        ?>
+                        <a href="<?php echo esc_url(home_url('/')); ?>" class="navbar-brand logo_h" rel="home">
+                            <img src="<?php echo $logoimg; ?>" alt="">
+                        </a>
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
