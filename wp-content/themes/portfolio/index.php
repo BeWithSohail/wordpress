@@ -143,7 +143,12 @@ body {
 }
 </style>     
 <!-- End -->  
-       
+
+<!-- start -->
+  <?php get_sidebar(); ?>
+<!-- end -->
+
+
 <!-- Blog Page design -->
 <section class="title container">
   <div class="row">
@@ -159,44 +164,42 @@ body {
 <div class="container">
   <div class="row">
   <?php
-	// The Query
-	$args = array(
-		'post_type' => 'post', // Fetching posts
-	);
-	$query = new WP_Query($args);
+$args = array(
+    'post_type' => 'post', // Fetching posts
+    'posts_per_page' => 2, // Number of posts per page
+    'paged' => get_query_var('paged') ? get_query_var('paged') : 1 // Current page
+);
+$query = new WP_Query($args);
 
-// The Loop
 if ($query->have_posts()) {
     while ($query->have_posts()) {
         $query->the_post();
         ?>
-       <div class="col-md-6 item">
-			<div class="item-in">
-				<h4>Some Kind of Title</h4>
-				<h4>
-					<a href="<?php the_permalink(); ?>">
-					<?php the_title(); ?></a>
-				</h4>
-				<div class="seperator"></div>
-				<p>
-				<?php the_excerpt(); ?>	
-				</p>
-				<a href="<?php the_permalink(); ?>">
-					 Read More
-					 <i class="fa fa-long-arrow-right"></i>
-				</a>
-
-			</div>
-   	 </div>
-    <?php
+        <div class="col-md-6 item">
+            <div class="item-in">
+                <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+                <div class="seperator"></div>
+                <p><?php the_excerpt(); ?></p>
+                <a href="<?php the_permalink(); ?>">Read More <i class="fa fa-long-arrow-right"></i></a>
+            </div>
+        </div>
+        <?php
     }
-    // Restore original post data
-    wp_reset_postdata();
+    // Display Simple Pagination
+    echo '<div class="pagination">';
+    echo paginate_links(array(
+        'total' => $query->max_num_pages // Total number of pages
+    ));
+    echo '</div>';
+
+    wp_reset_postdata(); // Restore original post data
 } else {
     // If no posts are found
     echo 'No posts found';
 }
 ?>
+
+
 
 
 
