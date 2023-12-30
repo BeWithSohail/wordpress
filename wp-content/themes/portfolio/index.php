@@ -143,7 +143,12 @@ body {
 }
 </style>     
 <!-- End -->  
-       
+
+<!-- start -->
+  <?php get_sidebar(); ?>
+<!-- end -->
+
+
 <!-- Blog Page design -->
 <section class="title container">
   <div class="row">
@@ -161,7 +166,7 @@ body {
   <?php
 $args = array(
     'post_type' => 'post', // Fetching posts
-    'posts_per_page' => 1, // Number of posts per page
+    'posts_per_page' => 2, // Number of posts per page
     'paged' => get_query_var('paged') ? get_query_var('paged') : 1 // Current page
 );
 $query = new WP_Query($args);
