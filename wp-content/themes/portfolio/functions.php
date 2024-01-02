@@ -7,9 +7,12 @@ add_action('after_setup_theme', 'register_my_menu');
 add_theme_support('post-thumbnails');
 add_theme_support('custom-header');
 
+function enable_excerpts_for_pages() {
+    add_post_type_support('page', 'excerpt');
+}
+add_action('init', 'enable_excerpts_for_pages');
 register_sidebar( array(
     'name'          => __( 'Sidebar Location', 'custom-theme' ), // Sidebar name
     'id'            => 'main-sidebar' // Sidebar ID, used in the template
 ));
-
 ?>
