@@ -1,6 +1,6 @@
 	<!-- Header -->
 	<?php get_header();?>       
-	<!-- End -->  
+	<!-- End --> 
 <!--================Home Banner Area =================-->
         <section class="banner_area">
             <div class="box_1620">

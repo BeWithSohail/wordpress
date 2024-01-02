@@ -20,7 +20,6 @@
         </section>
         <!--================End Home Banner Area =================-->
         
-        
         <!--================Home Banner Area =================-->
         <section class="profile_area">
            	<div class="container">

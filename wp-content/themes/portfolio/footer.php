@@ -72,6 +72,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				$('.menu_nav li').addClass('nav-item');
 				$('.menu_nav li a').addClass('nav-link');
 			})
+
+		
 		</script>
     </body>
 </html>
