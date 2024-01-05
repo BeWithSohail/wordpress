@@ -4,28 +4,66 @@
  */
 ?>
 
-<?php get_header(); ?>
+<?php 
+	get_header(); 
+		$title_description = get_field('small_title');
+		$author_description = get_field("author_description");
+		$author_name = get_field("author_name");
+		$author_designation = get_field("author_designation");
+		$long_description = get_field('long_description');
+		// $author_image = get_field('author_image');
+		// $author_url = $author_image('author_image');
+		
+?>
  <!--================Home Banner Area =================-->
+
  <section class="home_banner_area">
            	<div class="container box_1620">
            		<div class="banner_inner d-flex align-items-center">
 					<div class="banner_content">
 						<div class="media">
 							<div class="d-flex">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/img/personal.jpg" alt="">
+							
+							<?php
+								$author_image = get_field('author_image'); // Retrieve the author image
+								if (is_array($author_image) && isset($author_image['url'])) {
+									$author_picture = $author_image['url']; // Get the 'url' property of the image
+									// Now $author_picture contains the URL of the author's image
+									echo '<img src="' . esc_url($author_picture) . '" alt="Author Image">';
+								} else {
+									// If the 'url' key is not present or $author_image is not an array, handle accordingly
+									echo 'No image found';
+								}
+								?>
 							</div>
 							<div class="media-body">
 								<div class="personal_text">
-									<h6>Hello Everybody, i am</h6>
-									<h3>Donald McKinney</h3>
-									<h4>Junior UI/UX Developer</h4>
-									<p>You will begin to realise why this exercise is called the Dickens Pattern (with reference to the ghost showing Scrooge some different futures)</p>
-									<ul class="list basic_info">
-										<li><a href="#"><i class="lnr lnr-calendar-full"></i> 31st December, 1992</a></li>
-										<li><a href="#"><i class="lnr lnr-phone-handset"></i> 44 (012) 6954 783</a></li>
-										<li><a href="#"><i class="lnr lnr-envelope"></i> businessplan@donald</a></li>
-										<li><a href="#"><i class="lnr lnr-home"></i> Santa monica bullevard</a></li>
+							    	<?php if ($title_description): ?>
+									<h6> 
+										<?php echo $title_description; ?>
+									</h6>
+									<?php endif; ?>
+									<h3>
+										<?php echo $author_name; ?>
+									</h3>
+									<h4>
+										<?php echo $author_designation; ?>
+									</h4>
+
+									<?php if($author_description):?>
+										<p>
+											<?php echo $author_description; ?>
+										</p>
+									<?php endif; ?>
+
+
+									<ul class="list basic_info">				
+										<li><a href="#"><i class="lnr lnr-calendar-full"></i> <?php  echo the_field('dob'); ?> </a></li>
+										<li><a href="#"><i class="lnr lnr-phone-handset"></i><?php  echo the_field('phone_number'); ?> </a></li>
+										<li><a href="mailto:<?php the_field('email_field'); ?>"><i class="lnr lnr-envelope"></i><?php  echo the_field('email_field'); ?></a></li>
+										<li><a href="#"><i class="lnr lnr-home"></i><?php  echo the_field('author_address'); ?></a></li>
 									</ul>
+
 									<ul class="list personal_social">
 										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -46,9 +84,12 @@
         		<div class="row welcome_inner">
         			<div class="col-lg-6">
         				<div class="welcome_text">
-        					<h4>About Myself</h4>
-        					<p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.</p>
-        					<div class="row">
+        					<h4> <?php echo  get_field('aboutmyself')?> </h4>
+							
+							<?php if($long_description): ?>
+        					<p><?php echo $long_description;?></p>
+        					<?php endif; ?>
+							<div class="row">
         						<div class="col-md-4">
         							<div class="wel_item">
         								<i class="lnr lnr-database"></i>
