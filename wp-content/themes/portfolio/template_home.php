@@ -11,8 +11,10 @@
 		$author_name = get_field("author_name");
 		$author_designation = get_field("author_designation");
 		$long_description = get_field('long_description');
-		// $author_image = get_field('author_image');
-		// $author_url = $author_image('author_image');
+		$author_image = get_field('author_image');
+		$author_img_src = $author_image['sizes']['medium'];
+		$author_img_title =  $author_image["title"];
+		$embed = get_Field('video_imbed');
 		
 ?>
  <!--================Home Banner Area =================-->
@@ -23,18 +25,7 @@
 					<div class="banner_content">
 						<div class="media">
 							<div class="d-flex">
-							
-							<?php
-								$author_image = get_field('author_image'); // Retrieve the author image
-								if (is_array($author_image) && isset($author_image['url'])) {
-									$author_picture = $author_image['url']; // Get the 'url' property of the image
-									// Now $author_picture contains the URL of the author's image
-									echo '<img src="' . esc_url($author_picture) . '" alt="Author Image">';
-								} else {
-									// If the 'url' key is not present or $author_image is not an array, handle accordingly
-									echo 'No image found';
-								}
-								?>
+									<img src="<?php echo ($author_img_src); ?>" alt="Author Image" title="<?php  echo $author_img_title?>">
 							</div>
 							<div class="media-body">
 								<div class="personal_text">
@@ -55,6 +46,16 @@
 											<?php echo $author_description; ?>
 										</p>
 									<?php endif; ?>
+
+
+
+									<?php 
+$count = array("sohail", "adil", "wakil");
+foreach ($count as $index => $value) {
+    echo "Index: " . $index . ", Value: " . $value . "<br>";
+}
+?>
+
 
 
 									<ul class="list basic_info">				
@@ -164,6 +165,18 @@
         	</div>
         </section>
         <!--================End Welcome Area =================-->
+		<!-- video embeds -->
+			<!-- <div class="video_embed"> 
+					<?php if($embed): ?>
+						<?php echo $embed; ?>
+					<?php endif; ?>
+			</div> -->
+
+			<div class="select_field"> 
+
+			</div>
+
+		<!-- end -->
         
         <!--================My Tabs Area =================-->
         <section class="mytabs_area p_120">
